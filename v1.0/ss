@@ -1,0 +1,89 @@
+<!-- <h2>Your daily Blogs</h1>
+    <%for(var i =0 ;i<blogName.length;i++){%>
+    
+        <div class="blogTile">
+    
+        <h3><%= blogName[i] %></h3>
+        <p><%= blogText[i] %></p> 
+    </div>
+        <%}%> -->
+
+
+        <form action="/blogtext" method="POST">
+            <button clas="creatBlogbtn">Add Blog</button> </form>
+
+
+
+            const post= {
+                BlogName : req.body.textName,
+                BlogTextarea :  req.body.textarea 
+            };
+            
+            console.log(post.BlogName);
+            BlogNames.push(post.BlogName);
+            BlogText.push(post.BlogTextarea);
+            
+            res.redirect("/home");
+
+
+
+
+
+            app.get("/", function(req,res){
+
+                // let uname =req.body.text1;
+                
+                
+                // userNAme = uname; 
+                
+            
+                res.render("List",{
+                    usrname : userNAme,
+                    blogName: BlogNames,
+                    blogText : BlogTexts
+                });
+            });
+            
+            
+            app.get("/blogtext", function(req,res){
+                
+                res.render("blogtext", {
+                    usrname :  userNAme
+                   
+                   })
+                } );
+                
+            
+            
+            
+            
+            
+            
+            
+            app.post("/blogtext",function(req,res){
+                let bname =req.body.text2;
+                let btext =req.body.text3;
+                BlogNames.push(bname);
+                BlogTexts.push(btext);
+              
+             
+                res.redirect("/");
+            });
+            
+            app.post("/",function(req,res){
+            
+              console.log(userNAme+BlogNames+BlogTexts);
+              res.redirect("/")
+            })
+              
+            
+             <%for(var i =0 ;i< blogName.length;i++){%>
+
+    <div class="blogTile">
+        <div class="cont-blog">
+            <h3><%= blogName[i] %></h3>
+            <p><%= blogText[i] %></p>
+        </div>
+
+    </div>
+    <%}%>
