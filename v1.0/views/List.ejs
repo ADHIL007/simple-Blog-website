@@ -1,0 +1,23 @@
+<%-include("header")-%>
+<div class="top-head">
+    
+    <h2>Your daily Blogs</h1>
+     <a class="a-btn" href="/blogtext">
+        
+        <button >Add Blog</button>  </a> 
+    
+    </div>
+    <%posts.forEach( function(posts){%>
+
+        <div class="blogTile">
+            <div class="cont-blog">
+               
+                <h3><%= posts.title %></h3>
+                
+                <p><%= posts.content.substring(0,30)  %>...<a class="a-link" href=" /home/<%- posts.title -%>"  >Read more</a></p>
+            </div>
+    
+        </div>
+        <%});%>
+   <% console.log(posts); %>
+<%-include("footer")-%>
